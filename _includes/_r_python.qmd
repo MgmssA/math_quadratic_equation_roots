@@ -1,0 +1,13 @@
+
+:::{.hidden}
+
+```{r}
+#| output: false
+
+reticulate::virtualenv_create("r-reticulate")
+reticulate::virtualenv_install("r-reticulate", "SymPy")
+sympy <- caracas::get_sympy()
+
+```
+
+:::

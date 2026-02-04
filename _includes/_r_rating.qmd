@@ -1,0 +1,114 @@
+::: {.content-hidden unless-meta="has-rating"}
+
+## Punkte {.unnumbered}
+
+```{r}
+#| label: max-points
+max_base_points <- tasks$base_points |> sum()
+max_level_points <- tasks$level_points |> sum()
+```
+
+Die mögliche Gesamtpunktanzahl ohne Stufenmultiplikatoren ist `{r} max_base_points`. Für die Benotung ist nur diese entscheidend. 
+
+### Gesamtpunkte pro Stufe {.unnumbered}
+
+Mit Multiplikatoren ergeben sich für die unterschiedlichen Anforderungsstufen folgende maximale Punktanzahlen:
+
+```{r}
+#| output: false
+#| label: points-per-level
+points_per_level <- tasks |>
+    dplyr::group_by(level) |>
+    dplyr::reframe(
+        # level_exercises = sum(task),
+        level_points = sum(level_points)
+    )
+```
+
+```{r}
+points_per_level |>
+    gt::gt() |>
+    gt::cols_label(
+        level = "Stufe",
+        # level_exercises = "Anzahl der Aufgaben",
+        level_points = "Gesamtpunkte"
+    ) |>
+    gt_theme()
+```
+
+Zusammen ergibt das `{r} max_level_points`. Aufgaben aus Stufe III bringen durch den Multiplikator mehr Punkte aber sind anspruchsvoller. Löst Du nur Aufgaben aus Stufe I und II, so musst Du mehr lösen aber dafür sind die Aufgaben leichter. Setze nicht immer alles auf eine Karte; mische die unterschiedlichen Stufen.
+
+### Punkte pro Aufgabe {.unnumbered}
+
+```{r}
+#| output: false
+#| label: points-per-problem
+points_per_problem <- tasks |>
+    dplyr::select(level, task, level_points, max_level_points) |>
+    dplyr::mutate(level = glue::glue('Stufe {level}'))
+```
+
+Die Punkte pro Aufgabe entnimmst Du der folgenden Tabelle:
+
+```{r}
+points_per_problem |>
+    gt::gt(groupname_col = "level") |>
+    gt::cols_label(
+        # level = "Stufe",
+        task = "Aufgabe",
+        level_points = "Punkte",
+        max_level_points = "Maximale Punkte"
+    ) |>
+    gt_theme()
+```
+
+### Benotung nach Punkten {.unnumbered}
+
+Die genaue Verteilung der Prozent- und Punktbereiche mit den dazugehörigen Noten entnimmst Du der folgenden Tabelle. 
+
+```{r}
+#| output: false
+
+rating <- openxlsx2::read_xlsx(
+    here::here("data/percentage_rating.xlsx"),
+    sheet = "Rating",
+    types = c(
+        percent_start = "numeric",
+        percent_end = "numeric",
+        grade_points = "numeric",
+        grade_level = "character"
+    )
+) |>
+    dplyr::mutate(
+        points_start = (percent_start / 100 * max_base_points) |> round(),
+        .after = percent_end
+    ) |>
+    dplyr::mutate(
+        points_end = (percent_end / 100 * max_base_points) |> ceiling(),
+        .after = points_start
+    ) |>
+    dplyr::mutate(
+        percent = glue::glue('{percent_start} bis {percent_end}'),
+        .after = percent_end
+    ) |>
+    dplyr::mutate(
+        points = glue::glue('{points_start} bis {points_end}'),
+        .after = points_end
+    ) |>
+    dplyr::select(-percent_start, -percent_end, -points_start, -points_end)
+
+```
+
+```{r}
+rating |>
+    gt::gt(groupname_col = "grade_level") |>
+    gt::cols_label(
+        percent = "Prozentbereich, {{%}}",
+        points = "Punktebereich",
+        grade_points = "Notenpunkte"
+    ) |>
+    gt_theme()
+
+```
+
+:::

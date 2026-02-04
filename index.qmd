@@ -1,0 +1,804 @@
+{{< include _includes/_front_matter.qmd >}}
+{{< include _includes/_init_fontawesome.qmd >}} 
+{{< include _includes/_katex_macros.qmd >}} 
+{{< include _includes/_r_python.qmd >}} 
+{{< include _includes/_r_utils.qmd >}} 
+{{< include _includes/_r_themes.qmd >}}
+<!-- {{< include _includes/_r_rating_init.qmd >}} -->
+
+<!-- {{< include _level_1.qmd >}} -->
+<!-- {{< include _level_2.qmd >}} -->
+<!-- {{< include _level_3.qmd >}} -->
+
+<!-- {{< include _includes/_r_rating.qmd >}} -->
+
+## Was sind Nullstellen?
+
+Stell Dir vor, Du hast eine Funktion $f$ mit der eindeutigen Zuordnungsvorschrift
+
+$$
+f: x \mapsto y.
+$$
+
+In der Sprache der Mathematik bedeutet diese Schreibweise, dass ein $x$ einem $y$ zugeordnet wird. Die Vorschrift nach der die Zuordnung stattfindet ist die Funktion $f$. In einem Koordinatensystem mit einer $x$ und einer $y$ Achse ist $f(x)$ der Funktionswert $y$ für die Stelle $x$ und Du darfst schreiben 
+
+$$
+y = f(x).
+$$
+
+Eine andere Darstellung einer Funktion ist ein Blockdiagramm. Der Block der Funktion stellt zum Beispiel eine Berechnungsmaschine dar, die als Input $x$ hat und als Output $y$ herausgibt.
+
+::: {.d-flex .justify-content-center}
+
+```{mermaid}
+%%| fig-height: 3
+flowchart LR
+    classDef icon shape:rounded,fill:#F4F4E7,stroke:#F4F4E7,font-size:28px;
+    classDef text shape:rounded,fill:#F4F4E7,stroke:#F4F4E7;
+    classDef empty height:0,width:0;
+
+    In("$$x$$"):::text --> Func["$$f$$"]
+    Func --> Out("$$y$$"):::text
+```
+
+:::
+
+### Ganz allgemein
+
+Die Nullstelle einer Funktion ist diejenige Stelle $x_0$, an der die Funktion den Rückgabewert $y = 0$ herausgibt. Mathematisch heisst das
+
+$$
+f(x_0) = 0.
+$$
+
+Im Blockdiagramm bedeutet das, dass der Input der Berechnungsmaschine $x_0$ ist und der Output $0$.
+
+::: {.d-flex .justify-content-center}
+
+```{mermaid}
+%%| fig-height: 3
+flowchart LR
+    classDef icon shape:rounded,fill:#F4F4E7,stroke:#F4F4E7,font-size:28px;
+    classDef text shape:rounded,fill:#F4F4E7,stroke:#F4F4E7;
+    classDef empty height:0,width:0;
+
+    In("$$x_0$$"):::text --> Func["$$f$$"]
+    Func --> Out("$$0$$"):::text
+```
+
+:::
+
+Wenn Du an Funktionsgraphen denkst, dann sind Nullstellen die Stellen, an denen der Graph die $x$ Achse berührt oder schneidet. Das ist deswegen so, weil die $x$ Achse die $y$ Achse an der Stelle $0$ schneidet.
+
+### Beispiel mit Probe
+
+Angenommen Du hast die Funktion
+
+$$
+f: x \mapsto 2x^2-6x-20.
+$$
+
+Als Funktionsgleichung geschrieben ist  
+
+$$
+f(x) = 2x^2-6x-20.
+$$
+
+Für diese Funktion suchst Du eine Nullstelle $x_0$, die in der Funktion für $x$ eingesetzt, Null ergibt. Das bedeutet folgendes:  
+
+$$
+f(x_0) = 2x_0^2 - 6x_0 -20 = 0
+$$
+
+Nehmen wir an, dass Du durch irgendein Verfahren die Nullstelle $x_0 = -2$ findest. Es ist ratsam, nun eine Probe zu machen. Die Probe zu machen bedeutet, dass die gefundene Nullstelle in die Funktion anstelle von $x$ eingesetzt wird. Ist das Ergebnis $0$, dann ist die Nullstell korrekt. Ist das Ergebnis nicht $0$, dann ist bei der Ermittlung der Nullstelle etwas schiefgelaufen. Da die Probe ein von der Ermittlung der Nullstelle unabhängiges Verfahren ist, eignet sie sich hervorragend, um die Ermittlung der Nullstelle zu überprüfen. Die Probe ergibt hier
+
+$$
+f(-2) = 2 \cdot (-2)^2 - 6 \cdot (-2) - 20 = 8 + 12 - 20 = 0.
+$$
+
+Im Blockdiagramm wird die Probe in diesem Fall so dargestellt:
+
+::: {.d-flex .justify-content-center}
+
+```{mermaid}
+%%| fig-height: 3
+flowchart LR
+    classDef icon shape:rounded,fill:#F4F4E7,stroke:#F4F4E7,font-size:28px;
+    classDef text shape:rounded,fill:#F4F4E7,stroke:#F4F4E7;
+    classDef empty height:0,width:0;
+
+    In("$$-2$$"):::text --> Func["$$2x^2-6x-20$$"]
+    Func --> Out("$$0$$"):::text
+```
+
+:::
+
+## Die quadratische Gleichung
+
+Die quadratische Gleichung lässt sich in verschiedene Formen darstellen. In den folgenden Abschnitten lernst Du diese Darstellungsformen und wie sie zusammenhängen.
+
+### Allgemeine Form {#sec-general}
+
+Die allgemeine Form der quadratischen Gleichung lautet
+
+$$
+ax^2 + bx + c = 0.
+$$ {#eq-abc}
+
+Die Zahlen $a$, $b$ und $c$ nennst Du **Koeffizienten** und $x$ ist der eingesetzte Zahlenwert oder die Unbekannte, je nachdem wie die Gleichung verwendet wird. Der Koeffizient $a$ ist auch als **Streckfaktor** bekannt. Folgende Benennungen sind auch wichtig, wenn Du über quadratische Gleichungen sprichst:
+
+- $ax^2$: Quadratisches Glied 
+- $bx$: Lineares Glied
+- $c$: Konstantes Glied
+
+Ist $a = 0$, dann wird die quadratische zu einer linearen Gleichung
+
+$$
+bx + c = 0.
+$$ {#eq-bc}
+
+Ist $b = 0$, dann nennst Du die übriggebliebene Gleichung
+
+$$
+ax^2 + c = 0
+$$ {#eq-ac}
+
+eine **reinquadratische** Gleichung. Ist $c = 0$, dann bleibt
+
+$$
+ax^2 + bx = 0
+$$ {#eq-ab}
+
+übrig. Es gibt eine oder mehrere Lösungen zu allen hier genannten Gleichungen.
+
+### Normalform
+
+Wenn $a = 1$, dann ergibt sich
+
+$$
+x^2 + bx + c = 0.
+$$ {#eq-bc}
+
+Wenn $a \neq 1$ und $a \neq 0$, dann kann durch $a$ geteilt werden und Du erhältst
+
+$$
+x^2 + \frac{b}{a}x + \frac{c}{a} = 0,
+$$ {#eq-aex}
+
+was als Normalform bezeichnet wird. Die Normalform kann auch so geschrieben werden
+
+$$
+x^2 + px + q = 0,
+$$ {#eq-pq}
+
+wobei die neuen Koeffizienten
+
+$$
+p = \frac{b}{a}
+$$ {#eq-pba}
+
+und
+
+$$
+q = \frac{c}{a}
+$$ {#eq-qca}
+
+die Koeffizienten der Normalform sind. 
+
+### Nullstellenform {#sec-linear-fac}
+
+Wenn wir die Lösungen oder Nullstellen $x_1$ und $x_2$ der quadratischen Gleichung kennen, dann lässt sie sich in folgender Form schreiben:
+
+$$
+a \cdot (x - x_1) \cdot (x - x_2) = 0.
+$$ {#eq-linfac}
+
+Diese Form kannst Du als **Nullstellenform** bezeichnen, wobei $x - x_1$ und $x - x_2$ **Linearfaktoren** genannt werden, da jedes $x$ minus irgendetwas ist eine lineare Funktion ist. Wir wenden jetzt gleich das Distributivgesetz auf die Nullstellenform an.
+
+::: {.callout-note collapse="true"}
+
+## Distributivgesetz
+
+$$
+\left( \mathfrak{a} + \mathfrak{b} \right) \cdot
+    \left( \mathfrak{c} + \mathfrak{d} \right)
+    = \mathfrak{a} \cdot \left( \mathfrak{c} + \mathfrak{d} \right) 
+    + \mathfrak{b} \cdot \left( \mathfrak{c} + \mathfrak{d} \right)
+    = \mathfrak{a}\mathfrak{c} + \mathfrak{a}\mathfrak{d} 
+    + \mathfrak{b}\mathfrak{c} + \mathfrak{b}\mathfrak{d}
+$$
+
+:::
+
+Wir multiplizieren die Klammern aus und finden
+
+$$
+a \cdot (x^2 - x_2 x - x_1 x + x_1 x_2) = 0,
+$$
+
+was wir anschliessend umordnen zu
+
+$$
+a \cdot \left[ x^2 - \left( x_1 + x_2 \right) x + x_1 x_2 \right] = 0.
+$$
+
+Der Ausdruck innerhalb der eckigen Klammern kannst Du mit @eq-pq vergleichen. Dabei kannst du feststellen, dass
+
+$$
+p = -(x_1 + x_2)
+$$ {#eq-pvieta}
+
+und
+
+$$
+q = x_1 x_2,
+$$ {#eq-qvieta}
+
+was sich aus **Vietas Satz** ergibt. Wenn also $p$ und $q$ eingesetzt werden, dann lässt sich die Gleichung folgendermassen umformen:
+
+$$
+a \cdot (x^2 + px + q) = 0.
+$$
+
+Und wenn wir jetzt die Koeffizienten der Normalform durch $p = \frac{b}{a}$ und $q = \frac{c}{a}$ ersetzen, bekommst Du die allgemeine Form heraus. 
+
+## Lösungsansätze der quadratischen Gleichung
+
+In den folgenden Abschnitten sind einige Lösungsansätze der quadratischen Gleichung aufgeführt. Für jedes Verfahren behandelst Du zuerst die theoretische Form. Danach folgt ein Beispiel zur Veranschaulichung.
+
+### Einfache Sonderfälle
+
+Die einfachen Sonderfälle ergeben sich aus allgemeinen Form dadurch, dass jeweils eines oder mehrere Koeffizienten gleich Null gesetzt werden. Aufgrund der Einfachheit dieser Lösungsansätze gibt es für diese keine Beispiele. 
+
+#### Trivialfälle
+
+Diese Fälle sind trivial, weil ihre Lösungen sich selbstverständlich und ohne größere Mühen entfalten. Wir behandeln sie deshalb in Tabellenform.
+
+| $a$ | $b$ | $c$ | Gleichung | Lösung |
+|---- |---- |---- |---- |---- |
+| $=0$ | $=0$ | $\neq 0$ | $c = 0$, Falsch! | Keine |
+| $=0$ | $\neq 0$ | $=0$ | $bx = 0$ | $x = 0$ |
+| $\neq 0$ | $=0$ | $=0$ | $ax^2 = 0$ | $x = 0$ |
+: Triviale Lösungen der quadratischen Gleichung {.light}
+
+#### Linearfall
+
+Beim Linearfall ist $a = 0$ und die Gleichung wird zu
+
+$$
+bx + c = 0.
+$$
+
+Die Lösung ist
+
+$$
+x = -\frac{c}{b}
+$$
+
+#### Reinquadratisch
+
+Die Koeffizienten der allgemeinen quadratischen Gleichung sind $a \neq 0$, $b = 0$ und $c \neq 0$, was zur reinquadratischen Gleichung
+
+$$
+ax^2 + c = 0
+$$
+
+führt. Die Lösung ist in diesem Fall
+
+$$
+x_{1,2} = \pm \sqrt{-\frac{c}{a}}.
+$$
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+$$
+\begin{align*}
+6x^2 - 27 &= 0 \\
+6x^2 &= 27 \\
+x^2 &= \frac{27}{6} \\
+x &= \pm \sqrt{\frac{27}{6}} 
+    = \pm \sqrt{\frac{9}{3}} \\ 
+\implies x_1 &= \frac{3}{\sqrt{3}}, \; x_2 = - \frac{3}{\sqrt{3}}
+\end{align*}
+$$
+
+##### Beispiel B
+
+$$
+\begin{align*}
+-2x^2 + 32 &= 0 \\
+-2x^2 &= -32 \\
+x^2 &= \frac{-32}{-2} = 16 \\
+x &= \pm \sqrt{16} \\
+\implies x_1 &= -4, \; x_2 = 4
+\end{align*}
+$$
+
+:::
+
+#### Ohne Konstantglied
+
+Die Koeffizienten sind hierbei $a \neq 0$, $b \neq 0$ und $c = 0$. Das bedeutet für die Gleichung:
+
+$$
+ax^2 + bx = 0.
+$$
+
+Durch Anwendung des Distributivgesetzes bekommst Du
+
+$$
+x \cdot (ax + b) = 0
+$$
+
+mit den Lösungen
+
+$$
+x_1 = 0, \; x_2 = -\frac{b}{a}.
+$$
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+$$
+\begin{align*}
+6x^2 - 27x &= 0 \\
+x(6x - 27) &= 0 \\
+\implies x_1 &= 0, \; x_2 = \frac{27}{6} = \frac{9}{2}
+\end{align*}
+$$
+
+##### Beispiel B
+
+$$
+\begin{align*}
+-2x^2 + 32x &= 0 \\
+x(-2x + 32) &= 0 \\
+\implies x_1 &= 0, \; x_2 = \frac{32}{-2} = -16
+\end{align*}
+$$
+
+:::
+
+### Quadratische Ergänzung
+
+Die quadratische Ergänzung ist eine alte Methode zur Lösung der quadratischen Gleichung. Die beruht auf der Vervollständigung eines Ausdrucks, der sich aus den binomischen Formeln ergibt.
+
+::: {.callout-note collapse="true"}
+
+## Binomische Formeln
+
+$$
+\begin{gather*}
+\left( \mathfrak{a} + \mathfrak{b} \right )^2 
+    = \mathfrak{a}^2 + 2\mathfrak{a}\mathfrak{b} + \mathfrak{b}^2 \\
+\left( \mathfrak{a} - \mathfrak{b} \right )^2 
+    = \mathfrak{a}^2 - 2\mathfrak{a}\mathfrak{b} + \mathfrak{b}^2 \\
+(\mathfrak{a} + \mathfrak{b}) \cdot (\mathfrak{a} - \mathfrak{b}) 
+    = \mathfrak{a}^2 - \mathfrak{b}^2
+\end{gather*}
+$$
+
+:::
+
+#### Allgemeine Form {#sec-quad-exp-general}
+
+Hast Du eine allgemeinen quadratischen Gleichung vor Dir, dann solltest Du sie in die Normalform, @eq-aex, überführen. Nun lassen wir erst einmal $\frac{c}{a}$ beiseite und betrachten den vorderen Teil $x^2 + \frac{b}{a}x$.
+
+Der Ansatz der quadratischen Ergänzung tut so, als ob der vordere Teil ein Teil einer ausmultiplizierten binomischen Formel $\mathfrak{a}^2 + 2\mathfrak{a}\mathfrak{b} + \mathfrak{b}^2$ ist, wenn $\mathfrak{a}$ durch $x$ ersetzt wird. Das heisst
+
+$$
+\underbrace{x^2 + 2\mathfrak{b}x + \mathfrak{b}^2}_{\text{$\mathfrak{a}$ durch $x$ ersetzt}}
+    = \underbrace{x^2 + \frac{b}{a}x + \textbf{?}^2}_{\text{Was ist \textbf{?}}}.
+$$
+
+Wir können auf beiden Seiten $x^2$ subtrahieren und durch $x$ teilen. Dann stellen wir nach $\mathfrak{b}$ um und erhalten 
+
+$$
+\mathfrak{b} = \frac{b}{2a}.
+$$
+
+Das müssen wir nun ergänzen, damit wir die binomische Formel erhalten. Wir tun das auf beiden Seiten von @eq-aex und erhalten
+
+$$
+x^2 + \frac{b}{a}x + \frac{c}{a} + \left( \frac{b}{2a} \right)^2 
+    = \left( \frac{b}{2a} \right)^2.
+$$
+
+Jetzt subtrahieren wir $\frac{c}{a}$, um es auf die rechte Seite zu bringen
+
+$$
+x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2 
+    = \left( \frac{b}{2a} \right)^2 - \frac{c}{a}
+$$
+
+und schliesslich wenden wir die binomische Formel an:
+
+$$
+\left( x + \frac{b}{2a} \right)^2 
+    = \left( \frac{b}{2a} \right)^2 - \frac{c}{a}
+$$ {#eq-before-abc}
+
+An dieser Stelle ist es wichtig, zu verstehen, dass $\frac{b}{2a}$ und der gesamte Ausdruck auf der rechten Seite einfach nur zwei Zahlen $\mathfrak{r}$ und $\mathfrak{s}$ sind. Und die ergeben sich aus der Berechnung. Wenn wir also die komplizierten Ausdrücke durch zwei Variablen ersetzen, können wir die Gleichung so schreiben:
+
+$$
+(x + \mathfrak{r})^2 = \mathfrak{s}.
+$$
+
+Für die Lösung ziehen wir die Wurzel auf beiden Seiten
+
+$$
+x + \mathfrak{r} = \pm \sqrt{\mathfrak{s}}
+$$
+
+und ordnen um nach der Lösung
+
+$$
+x_{1,2} = - \mathfrak{r} \pm \sqrt{\mathfrak{s}}
+$$
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+$$
+\begin{align*}
+2x^2 + 2x - 24 &= 0 \\
+x^2 + x - 12 &= 0 \\
+x^2 + x &= 12 \\
+x^2 + 2 \cdot \frac{1}{2} \cdot x + \left( \frac{1}{2} \right)^2
+    &= 12 + \left( \frac{1}{2} \right)^2 
+    = 12 + \frac{1}{4} 
+    = \frac{48}{4} + \frac{1}{4} 
+    = \frac{49}{4} \\
+\left( x + \frac{1}{2} \right)^2 &= \frac{49}{4} \\
+x + \frac{1}{2} &= \pm \sqrt{\frac{49}{4}} \\
+\implies x_{1,2} &= - \frac{1}{2} \pm \sqrt{\frac{49}{4}}  
+    = - \frac{1}{2} \pm \frac{7}{2}  
+    = \frac{-1 \pm 7}{2} \\
+x_1 &= \frac{-1 + 7}{2} = 3, \\ 
+x_2 &= \frac{-1 - 7}{2} = -4
+\end{align*}
+$$
+
+##### Beispiel B
+
+$$
+\begin{align*}
+2x^2 - 6x - 20 &= 0 \\
+x^2 - 3x - 10 &= 0 \\
+x^2 - 3x &= 10 \\
+x^2 - 2 \cdot \frac{3}{2} \cdot x + \left( \frac{3}{2} \right)^2
+    &= 10 + \left( \frac{3}{2} \right)^2 
+    = 10 + \frac{9}{4} 
+    = \frac{40}{4} + \frac{9}{4} 
+    = \frac{49}{4} \\
+\left( x - \frac{3}{2} \right)^2 &= \frac{49}{4} \\
+x - \frac{3}{2} &= \pm \sqrt{\frac{49}{4}} \\
+\implies x_{1,2} &= \frac{3}{2} \pm \sqrt{\frac{49}{4}}  
+    = \frac{3}{2} \pm \frac{7}{2}  
+    = \frac{3 \pm 7}{2} \\
+x_1 &= \frac{3 + 7}{2} = 5, \\
+x_2 &= \frac{3 - 7}{2} = -2
+\end{align*}
+$$
+
+:::
+
+#### Normalform {#sec-quad-exp-normal}
+
+Nun starten wir direkt mit der in @eq-pq gezeigten Normalform der quadratischen Gleichung. Der Ansatz der quadratischen Ergänzung ist hier genauso anwendbar wie bei der allgemeinen quadratischen Gleichung. Wir tun wieder so, als ob der vordere Teil ein Teil einer ausmultiplizierten binomischen Formel $\mathfrak{a}^2 + 2\mathfrak{a}\mathfrak{b} + \mathfrak{b}^2$ ist, wenn $\mathfrak{a}$ durch $x$ ersetzt wird. Das heisst
+
+$$
+\underbrace{x^2 + 2\mathfrak{b}x + \mathfrak{b}^2}_{\text{$\mathfrak{a}$ durch $x$ ersetzt}}
+    = \underbrace{x^2 + px + \textbf{?}^2}_{\text{Was ist \textbf{?}}}.
+$$
+
+Wir können auf beiden Seiten $x^2$ subtrahieren und durch $x$ teilen. Dann stellen wir nach $\mathfrak{b}$ um und erhalten 
+
+$$
+\mathfrak{b} = \frac{p}{2}.
+$$
+
+Das müssen wir nun ergänzen, damit wir die binomische Formel erhalten. Wir tun das auf beiden Seiten von @eq-aex und erhalten
+
+$$
+x^2 + px + q + \left( \frac{p}{2} \right)^2 
+    = \left( \frac{p}{2} \right)^2.
+$$
+
+Jetzt subtrahieren wir $q$, um es auf die rechte Seite zu bringen
+
+$$
+x^2 + px + \left( \frac{p}{2} \right)^2 
+    = \left( \frac{p}{2} \right)^2 - q
+$$
+
+und schliesslich wenden wir die binomische Formel an:
+
+$$
+\left( x + \frac{p}{2} \right)^2 
+    = \left( \frac{p}{2} \right)^2 - q
+$$ {#eq-before-pq}
+
+An dieser Stelle handeln wir wie in @sec-quad-exp-general und ersetzen $\frac{p}{2}$ und den Ausdruck auf der rechten Seite mit den zu berechnenden Zahlen $\mathfrak{r}$ und $\mathfrak{s}$ sind. Und damit bekommen wir
+
+$$
+x_{1,2} = - \mathfrak{r} \pm \sqrt{\mathfrak{s}},
+$$ 
+
+was dasselbe Ergebnis wie bei der allgemeinen quadratischen Gleichung ist.
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+$$
+\begin{align*}
+x^2 - 2x - 35 &= 0 \\
+x^2 - 2x &= 35 \\
+x^2 - 2 \cdot 1 \cdot x + 1^2 &= 35 + 1^2  
+    = 36 \\
+\left( x - 1 \right)^2 &= 36 \\
+x - 1 &= \pm \sqrt{36} \\
+\implies x_{1,2} &= 1 \pm \sqrt{36} 
+    = 1 \pm 6 \\
+x_1 &= 1 + 6 = 7, \\
+x_2 &= 1 - 6 = -5
+\end{align*}
+$$
+
+##### Beispiel B
+
+$$
+\begin{align*}
+x^2 - 13x + 22 &= 0 \\
+x^2 - 13x &= -22 \\
+x^2 - 2 \cdot \frac{13}{2} \cdot x + \left(\frac{13}{2}\right)^2 &= -22 + \left(\frac{13}{2}\right)^2  
+    = -22 + \frac{169}{4} 
+    = \frac{81}{4} \\
+\left( x + \frac{13}{2} \right)^2 &= \frac{81}{4} \\     
+x - \frac{13}{2} &= \pm \sqrt{\frac{81}{4}} 
+    = \pm \frac{9}{2} \\
+\implies x_{1,2} &= \frac{13}{2} \pm \sqrt{\frac{81}{4}} 
+    = \frac{13}{2} \pm \frac{9}{2}
+    = \frac{13 \pm 9}{2} \\
+x_1 &= \frac{13 + 9}{2} = \frac{22}{2} = 11, \\
+x_2 &= \frac{13 - 9}{2} = \frac{4}{2} = 2
+\end{align*}
+$$
+
+:::
+
+### abc Formel
+
+Wir knüpfen hier direkt an @eq-before-abc aus @sec-quad-exp-general an. Wir ziehen nun die Wurzel auf beiden Seiten beiden Seiten des Gleichheitszeichens:
+
+$$
+x + \frac{b}{2a} 
+    = \pm \sqrt{\left( \frac{b}{2a} \right)^2 - \frac{c}{a}}.
+$$
+
+Wir bringen das $\frac{b}{2a}$ von der linken auf die rechte Seite
+
+$$
+x = - \frac{b}{2a} \pm \sqrt{\left( \frac{b}{2a} \right)^2 - \frac{c}{a}},
+$$
+
+und machen ein Paar krasse Moves; check this out:
+
+$$
+\sqrt{\left( \frac{b}{2a} \right)^2 - \frac{c}{a}}
+    = \sqrt{ \frac{1}{4a^2} \left( b^2 - 4ac \right) }
+    = \frac{1}{2a} \sqrt{ b^2 - 4ac }.
+$$
+
+Jetzt setzen wir das in die vorletzte Gleichung ein und bekommen
+
+$$
+x_{1,2} = \frac{-b \pm \sqrt{ b^2 - 4ac }}{2a}
+$$ {#eq-abc-sol}
+
+Das ist die abc Formel zur Lösung einer allgemeinen quadratischen Gleichung. Den Ausdruck $D = b^2 - 4ac$ nennst Du **Diskriminante** und hierbei gilt folgendes:
+
+- $D < 0$: Keine Lösung mit reellen Zahlen
+- $D = 0$: Eine Lösung
+- $D > 0$: Zwei Lösungen
+
+Die abc Formel mag etwas umständlich erscheinen und die Eingabe im Taschenrechner kann leicht zu Fehler führen. Allerdings ist die abc Formel mit weniger Schritte verbunden. Ausserdem sind die quadratischen Gleichungen in der realen Welt da draussen oft mit ganz krummen Zahlen verbunden. Dafür die quadratische Ergänzung anzuwenden, kann komplizierter sein.
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+$$
+\begin{align*}
+2x^2 + 2x - 24 &= 0 \\
+D &= (-2)^2 - 4 \cdot 2 \cdot (-24) 
+    = 4 + 192
+    = 196 \\
+\implies x_{1,2} &= \frac{-2 \pm \sqrt{196}}{2 \cdot 2} 
+    = \frac{-2 \pm 14}{4} 
+    = \frac{-1 \pm 7}{2} \\
+x_1 &= \frac{-1 + 7}{2} = 3, \\ 
+x_2 &= \frac{-1 - 7}{2} = -4
+\end{align*}
+$$
+
+##### Beispiel B
+
+$$
+\begin{align*}
+2x^2 - 6x - 20 &= 0 \\
+D &= (-6)^2 - 4 \cdot 2 \cdot (-20) 
+    = 36 + 160
+    = 196 \\
+\implies x_{1,2} &= \frac{-6 \pm \sqrt{196}}{2 \cdot 2} 
+    = \frac{-6 \pm 14}{4} 
+    = \frac{-3 \pm 7}{2} \\
+x_1 &= \frac{-3 + 7}{2} = 2, \\ 
+x_2 &= \frac{-3 - 7}{2} = -5
+\end{align*}
+$$
+
+:::
+
+### pq Formel
+
+Hier knüpfen wir ebenfalls an einer Gleichung an, die sich aus der quadratischen Ergänzung herleitet. Wir verwenden dieses Mal @eq-before-pq aus @sec-quad-exp-normal an. Wir ziehen nun die Wurzel auf beiden Seiten des Gleichheitszeichens:
+
+$$
+x + \frac{p}{2} 
+    = \pm \sqrt{\left( \frac{p}{2} \right)^2 - q}.
+$$
+
+Wir bringen das $\frac{p}{2}$ von der linken auf die rechte Seite
+
+$$
+x_{1,2} = - \frac{p}{2} \pm \sqrt{\left( \frac{p}{2} \right)^2 - q},
+$$
+
+und erhalten die pq Formel zur Lösung quadratischer Gleichung in der Normalform. Den Ausdruck $D = \left( \frac{p}{2} \right)^2 - q$ ist ebenfalls eine **Diskriminante**. Auch hier gilt:
+
+- $D < 0$: Keine Lösung mit reellen Zahlen
+- $D = 0$: Eine Lösung
+- $D > 0$: Zwei Lösungen
+
+Die pq Formel ist die am wenigsten komplizierte Art die quadratische Gleichung zu lösen.
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+$$
+\begin{align*}
+x^2 - 2x - 35 &= 0 \\
+D &= \left( \frac{-2}{2} \right)^2 - (-35) 
+    = 1 + 35
+    = 36 \\
+\implies x_{1,2} &= -\frac{-2}{2} \pm \sqrt{36} 
+    = 1 \pm 6 \\
+x_1 &= 1 + 6 = 7, \\ 
+x_2 &= 1 - 6 = -5
+\end{align*}
+$$
+
+##### Beispiel B
+
+$$
+\begin{align*}
+x^2 - 13x + 22 &= 0 \\
+D &= \left( \frac{-13}{2} \right)^2 - 22 
+    = \frac{169}{4} - \frac{88}{4}
+    = \frac{81}{4} \\
+\implies x_{1,2} &= -\frac{-13}{2} \pm \sqrt{\frac{81}{4}} 
+    = \frac{13}{2} \pm\frac{9}{2}
+    = \frac{13 \pm 9}{2} \\
+x_1 &= \frac{13 + 9}{2} = 11, \\ 
+x_2 &= \frac{13 - 9}{2} = 4
+\end{align*}
+$$
+
+:::
+
+### Vieta
+
+Der Satz von Vieta verbindet die Nullstellen einer quadratischen Gleichung mit den Koeffizienten der Normalform auf eine einfache Weise; wie in @sec-linear-fac dargestellt. Dadurch ist Vietas Satz in der Schulmathematik ein beliebtes Werkzeug. Noch beliebter allerdings mag die Tatsache sein, dass Vieta umgekehrt angewendet, die Herstellung von quadratischen Gleichungen erlaubt. Dadurch kann man für die Schulmathematik geeignete Aufgaben designen.
+
+Vietas Satz lässt sich in der Schulmathematik prima auf die Normalform der quadratischen Gleichung anwenden. Wir starten also mit
+
+$$
+x^2 + px + q = 0.
+$$
+
+Aus @sec-linear-fac wissen wir, dass die Koeffizienten der Normalform folgende Verbindung zu den Nullstellen besitzen:
+
+$$
+p = -(x_1 + x_2), \, q = x_1 \cdot x_2.  
+$$
+
+Wenn Vieta in der Schulmathematik verwendet wird, dann musst Du meistens die Lösungen durch Ausprobieren oder durch einen Algorithmus finden. Indem die vermuteten Nullstellen Vietas Bedingungen in @eq-pvieta und @eq-qvieta erfüllen müssen, macht man sie zu sicheren Lösungen. Das ist allerdings kein analytisches Vorgehen. Deshalb spielt im realen Leben Vietas Satz in vielen Bereichen keine große Rolle.
+
+::: {.callout-tip collapse="true"}
+
+## Beispiele
+
+##### Beispiel A
+
+Gegeben ist die folgende quadratische Gleichung:
+
+$$
+x^2 + 6x - 7 = 0.
+$$
+
+Du vermutest, dass irgendwie die Zahlen $1$ und $7$ eine Rolle spielen. Ein davon muss negativ sein, aber Du weisst nicht welche. Es bleibt nichts anderes übrig, als auszuprobieren.
+
+$$
+\begin{align*}
+x_1 &= -1 \\
+x_2 &= 7 \\
+\implies p &= -(-1 + 7) = -6 \\
+\implies q &= (-1) \cdot 7 = -7 \\
+\end{align*}
+$$
+
+Nö; dann anders herum.
+
+$$
+\begin{align*}
+x_1 &= 1 \\
+x_2 &= -7 \\
+\implies p &= -(1 + (-7)) = 6 \\
+\implies q &= 1 \cdot (-7) = -7 \\
+\end{align*}
+$$
+
+Das war richtig.
+
+##### Beispiel B
+
+Gegeben ist:
+
+$$
+x^2 + 6x - 55 = 0.
+$$
+
+Vermutung: $5$ und $11$.
+
+$$
+\begin{align*}
+x_1 &= -5 \\
+x_2 &= 11 \\
+\implies p &= -(-5 + 11) = -6 \\
+\implies q &= (-5) \cdot 11 = -55 \\
+\end{align*}
+$$
+
+Nö; anders herum.
+
+$$
+\begin{align*}
+x_1 &= 5 \\
+x_2 &= -11 \\
+\implies p &= -(5 + (-11)) = 6 \\
+\implies q &= 5 \cdot (-11) = -55 \\
+\end{align*}
+$$
+
+Das war richtig.
+
+:::

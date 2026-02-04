@@ -1,0 +1,27 @@
+::: {.content-hidden unless-meta="has-rating"}
+
+:::{.hidden}
+
+```{r}
+#| output: false
+
+tasks <- tibble::tibble(
+    task = character(),
+    level = numeric(),
+    base_points = numeric(),
+    max_base_points = numeric(),
+    level_points = numeric(),
+    max_level_points = numeric()
+)
+
+```
+
+:::
+
+## Arbeitsaufträge {.unnumbered}
+
+Bevor Du loslegst, rufe Dir die [Anforderungen](https://mgmssa.github.io/bio_expectations_and_requirements/) für Biologieaufgaben in Stufe 10 ins Gedächtnis. Reiche die Antworten als digitales Dokument ein und verwende eine leserliche Schrift, falls Du ein handgeschriebenes Dokument einreichst. Stufe I ist auf E Niveau, Stufe II ist auf E/A Niveau, Stufe III ist komplett auf A Niveau angesiedelt. 
+
+Die Grundpunktanzahl eines Arbeitsauftrages wird durch die Summe der Grundpunkte aller Aufgaben berechnet. Die Grundpunkte kannst Du nicht einsehen, weil sie für Dich bei der Wahl der Aufgaben keine Rolle spielen. Die Grundpunkte sind aber wichtig, weil die Benotungsstufen von ihnen abhängt.
+
+Keine Panik! Die Grundpunkte werden mit den Multiplikatoren **1** für Stufe I, **2** für Stufe II, und **3** für Stufe III, multipliziert. Du bekommst *diese* Punkte und nicht die Grundpunkte. Du vergleichst *diese* Punkte mit der Tabelle, um Deine Note einzuschätzen. Das heisst, weil Deine Punkte durch die Multiplikatoren gegangen sind, kannst Du mehr Punkte einfahren, als zum Erreichen einer Notenstufe "Sehr gut" notwendig ist.

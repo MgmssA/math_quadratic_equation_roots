@@ -1,0 +1,23 @@
+---
+title: |
+    <p>![](style/mgmss_symbol_color.png){width=40px}</p>
+    Nullstellen der quadratischen Gleichung
+subtitle: 'Lösungsmöglichkeiten<br><small>Information</small>'
+date: 2026-01-20 
+date-modified: 2026-01-20
+author: Călin Aurel Drăgan
+abstract: 'Die Nullstellen einer quadratischen Gleichung werden in einigen naturwissenschaftlichen und technischen Anwendungen gebraucht. Darunter in der Kinematik, oder Bewegungslehre bei der Beschreibung von beschleunigten Bewegungen oder der Berechnung von Wurf- und ballistischen Bahnen und in der Statik. In den Grundlagen der physikalischen Chemie bei der Berechnung von pH Werten. In der Wirtschaftswissenschaft bei der Profitmaximierung, und so weiter, und so weiter. Zieh Dir dieses Dokument hier rein, damit Du epische Lösungen entwickeln lernst und Du richtig raussaften kannst.'
+# bibliography: references.bib
+format: 
+    mathdoc-html:
+        include-in-header: _includes/_in_header.html
+        # include-after-body: _includes/_after_body.html
+        embed-resources: false
+        self-contained-math: false
+has-fontawesome: false
+has-math: true
+has-rating: false
+show-rating: false
+filters:
+  - highlight-text
+---

@@ -1,0 +1,14 @@
+
+:::{.hidden}
+
+```{r}
+#| output: false
+
+sympy <- caracas::get_sympy()
+sym2tex <- function(symbol) {
+    glue::glue('$${caracas::tex(symbol)}$$')
+}
+
+```
+
+:::
