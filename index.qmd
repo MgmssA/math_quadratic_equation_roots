@@ -389,7 +389,11 @@ $$
 
 #### Allgemeine Form {#sec-quad-exp-general}
 
-Hast Du eine allgemeinen quadratischen Gleichung vor Dir, dann solltest Du sie in die Normalform, @eq-aex, überführen. Nun lassen wir erst einmal $\frac{c}{a}$ beiseite und betrachten den vorderen Teil $x^2 + \frac{b}{a}x$.
+Hast Du eine allgemeinen quadratischen Gleichung vor Dir, dann solltest Du sie in die Normalform, @eq-aex, überführen. Nun verschieben wir $\frac{c}{a}$ auf die linke Seite, damit wir klarer den Rest der binomischen Formel auf der linken Seite sehen:
+
+$$
+x^2 + \frac{b}{a}x = -\frac{c}{a}.
+$$
 
 Der Ansatz der quadratischen Ergänzung tut so, als ob der vordere Teil ein Teil einer ausmultiplizierten binomischen Formel $\mathfrak{a}^2 + 2\mathfrak{a}\mathfrak{b} + \mathfrak{b}^2$ ist, wenn $\mathfrak{a}$ durch $x$ ersetzt wird. Das heisst
 
@@ -407,40 +411,40 @@ $$
 Das müssen wir nun ergänzen, damit wir die binomische Formel erhalten. Wir tun das auf beiden Seiten von @eq-aex und erhalten
 
 $$
-x^2 + \frac{b}{a}x + \frac{c}{a} + \left( \frac{b}{2a} \right)^2 
-    = \left( \frac{b}{2a} \right)^2.
+x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2 
+    = -\frac{c}{a} + \left( \frac{b}{2a} \right)^2.
 $$
 
 Jetzt subtrahieren wir $\frac{c}{a}$, um es auf die rechte Seite zu bringen
 
 $$
 x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2 
-    = \left( \frac{b}{2a} \right)^2 - \frac{c}{a}
+    = - \frac{c}{a} + \left( \frac{b}{2a} \right)^2
 $$
 
 und schliesslich wenden wir die binomische Formel an:
 
 $$
 \left( x + \frac{b}{2a} \right)^2 
-    = \left( \frac{b}{2a} \right)^2 - \frac{c}{a}
+    = -\frac{c}{a} + \left( \frac{b}{2a} \right)^2
 $$ {#eq-before-abc}
 
-An dieser Stelle ist es wichtig, zu verstehen, dass $\frac{b}{2a}$ und der gesamte Ausdruck auf der rechten Seite einfach nur zwei Zahlen $\mathfrak{r}$ und $\mathfrak{s}$ sind. Und die ergeben sich aus der Berechnung. Wenn wir also die komplizierten Ausdrücke durch zwei Variablen ersetzen, können wir die Gleichung so schreiben:
+An dieser Stelle ist es wichtig, zu verstehen, dass $\frac{b}{2a}$ und der gesamte Ausdruck auf der rechten Seite einfach nur zwei Zahlen $z_1$ und $z_2$ sind. Und die ergeben sich aus der Berechnung; zum Beispiel mit dem Taschenrechner. Wenn wir also die komplizierten Ausdrücke durch zwei Variablen ersetzen, können wir die Gleichung so schreiben:
 
 $$
-(x + \mathfrak{r})^2 = \mathfrak{s}.
+(x + z_1)^2 = z_2.
 $$
 
 Für die Lösung ziehen wir die Wurzel auf beiden Seiten
 
 $$
-x + \mathfrak{r} = \pm \sqrt{\mathfrak{s}}
+x + z_1 = \pm \sqrt{z_2}
 $$
 
 und ordnen um nach der Lösung
 
 $$
-x_{1,2} = - \mathfrak{r} \pm \sqrt{\mathfrak{s}}
+x_{1,2} = - z_1 \pm \sqrt{z_2}
 $$
 
 ::: {.callout-tip collapse="true"}
@@ -529,10 +533,10 @@ $$
     = \left( \frac{p}{2} \right)^2 - q
 $$ {#eq-before-pq}
 
-An dieser Stelle handeln wir wie in @sec-quad-exp-general und ersetzen $\frac{p}{2}$ und den Ausdruck auf der rechten Seite mit den zu berechnenden Zahlen $\mathfrak{r}$ und $\mathfrak{s}$ sind. Und damit bekommen wir
+An dieser Stelle handeln wir wie in @sec-quad-exp-general und ersetzen $\frac{p}{2}$ und den Ausdruck auf der rechten Seite mit den zu berechnenden Zahlen $z_1$ und $z_2$ sind. Und damit bekommen wir
 
 $$
-x_{1,2} = - \mathfrak{r} \pm \sqrt{\mathfrak{s}},
+x_{1,2} = - z_1 \pm \sqrt{z_2},
 $$ 
 
 was dasselbe Ergebnis wie bei der allgemeinen quadratischen Gleichung ist.

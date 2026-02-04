@@ -8,7 +8,7 @@
 
 <meta name="author" content="Călin Aurel Drăgan">
 
-<title>quarto-inpute984fb2a6ee5bbc</title>
+<title>quarto-inputd03d698eda525605</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -625,7 +625,10 @@ x(-2x + 32) &amp;= 0 \\
 </div>
 <section id="sec-quad-exp-general" class="level4" data-number="3.2.1">
 <h4 data-number="3.2.1" class="anchored" data-anchor-id="sec-quad-exp-general"><span class="header-section-number">3.2.1</span> Allgemeine Form</h4>
-<p>Hast Du eine allgemeinen quadratischen Gleichung vor Dir, dann solltest Du sie in die Normalform, <a href="#eq-aex" class="quarto-xref">Gleichung&nbsp;6</a>, überführen. Nun lassen wir erst einmal <span class="math inline">\frac{c}{a}</span> beiseite und betrachten den vorderen Teil <span class="math inline">x^2 + \frac{b}{a}x</span>.</p>
+<p>Hast Du eine allgemeinen quadratischen Gleichung vor Dir, dann solltest Du sie in die Normalform, <a href="#eq-aex" class="quarto-xref">Gleichung&nbsp;6</a>, überführen. Nun verschieben wir <span class="math inline">\frac{c}{a}</span> auf die linke Seite, damit wir klarer den Rest der binomischen Formel auf der linken Seite sehen:</p>
+<p><span class="math display">
+x^2 + \frac{b}{a}x = -\frac{c}{a}.
+</span></p>
 <p>Der Ansatz der quadratischen Ergänzung tut so, als ob der vordere Teil ein Teil einer ausmultiplizierten binomischen Formel <span class="math inline">\mathfrak{a}^2 + 2\mathfrak{a}\mathfrak{b} + \mathfrak{b}^2</span> ist, wenn <span class="math inline">\mathfrak{a}</span> durch <span class="math inline">x</span> ersetzt wird. Das heisst</p>
 <p><span class="math display">
 \underbrace{x^2 + 2\mathfrak{b}x + \mathfrak{b}^2}_{\text{$\mathfrak{a}$ durch $x$ ersetzt}}
@@ -637,30 +640,30 @@ x(-2x + 32) &amp;= 0 \\
 </span></p>
 <p>Das müssen wir nun ergänzen, damit wir die binomische Formel erhalten. Wir tun das auf beiden Seiten von <a href="#eq-aex" class="quarto-xref">Gleichung&nbsp;6</a> und erhalten</p>
 <p><span class="math display">
-x^2 + \frac{b}{a}x + \frac{c}{a} + \left( \frac{b}{2a} \right)^2
-    = \left( \frac{b}{2a} \right)^2.
+x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2
+    = -\frac{c}{a} + \left( \frac{b}{2a} \right)^2.
 </span></p>
 <p>Jetzt subtrahieren wir <span class="math inline">\frac{c}{a}</span>, um es auf die rechte Seite zu bringen</p>
 <p><span class="math display">
 x^2 + \frac{b}{a}x + \left( \frac{b}{2a} \right)^2
-    = \left( \frac{b}{2a} \right)^2 - \frac{c}{a}
+    = - \frac{c}{a} + \left( \frac{b}{2a} \right)^2
 </span></p>
 <p>und schliesslich wenden wir die binomische Formel an:</p>
 <p><span id="eq-before-abc"><span class="math display">
 \left( x + \frac{b}{2a} \right)^2
-    = \left( \frac{b}{2a} \right)^2 - \frac{c}{a}
+    = -\frac{c}{a} + \left( \frac{b}{2a} \right)^2
 \tag{13}</span></span></p>
-<p>An dieser Stelle ist es wichtig, zu verstehen, dass <span class="math inline">\frac{b}{2a}</span> und der gesamte Ausdruck auf der rechten Seite einfach nur zwei Zahlen <span class="math inline">\mathfrak{r}</span> und <span class="math inline">\mathfrak{s}</span> sind. Und die ergeben sich aus der Berechnung. Wenn wir also die komplizierten Ausdrücke durch zwei Variablen ersetzen, können wir die Gleichung so schreiben:</p>
+<p>An dieser Stelle ist es wichtig, zu verstehen, dass <span class="math inline">\frac{b}{2a}</span> und der gesamte Ausdruck auf der rechten Seite einfach nur zwei Zahlen <span class="math inline">z_1</span> und <span class="math inline">z_2</span> sind. Und die ergeben sich aus der Berechnung; zum Beispiel mit dem Taschenrechner. Wenn wir also die komplizierten Ausdrücke durch zwei Variablen ersetzen, können wir die Gleichung so schreiben:</p>
 <p><span class="math display">
-(x + \mathfrak{r})^2 = \mathfrak{s}.
+(x + z_1)^2 = z_2.
 </span></p>
 <p>Für die Lösung ziehen wir die Wurzel auf beiden Seiten</p>
 <p><span class="math display">
-x + \mathfrak{r} = \pm \sqrt{\mathfrak{s}}
+x + z_1 = \pm \sqrt{z_2}
 </span></p>
 <p>und ordnen um nach der Lösung</p>
 <p><span class="math display">
-x_{1,2} = - \mathfrak{r} \pm \sqrt{\mathfrak{s}}
+x_{1,2} = - z_1 \pm \sqrt{z_2}
 </span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -748,9 +751,9 @@ x^2 + px + \left( \frac{p}{2} \right)^2
 \left( x + \frac{p}{2} \right)^2
     = \left( \frac{p}{2} \right)^2 - q
 \tag{14}</span></span></p>
-<p>An dieser Stelle handeln wir wie in <a href="#sec-quad-exp-general" class="quarto-xref">Abschnitt&nbsp;3.2.1</a> und ersetzen <span class="math inline">\frac{p}{2}</span> und den Ausdruck auf der rechten Seite mit den zu berechnenden Zahlen <span class="math inline">\mathfrak{r}</span> und <span class="math inline">\mathfrak{s}</span> sind. Und damit bekommen wir</p>
+<p>An dieser Stelle handeln wir wie in <a href="#sec-quad-exp-general" class="quarto-xref">Abschnitt&nbsp;3.2.1</a> und ersetzen <span class="math inline">\frac{p}{2}</span> und den Ausdruck auf der rechten Seite mit den zu berechnenden Zahlen <span class="math inline">z_1</span> und <span class="math inline">z_2</span> sind. Und damit bekommen wir</p>
 <p><span class="math display">
-x_{1,2} = - \mathfrak{r} \pm \sqrt{\mathfrak{s}},
+x_{1,2} = - z_1 \pm \sqrt{z_2},
 </span></p>
 <p>was dasselbe Ergebnis wie bei der allgemeinen quadratischen Gleichung ist.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
